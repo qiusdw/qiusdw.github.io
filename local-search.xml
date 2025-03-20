@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>我的第一篇博客</title>
+    <link href="/2025/03/19/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <url>/2025/03/19/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="欢迎来到我的博客"><a href="#欢迎来到我的博客" class="headerlink" title="欢迎来到我的博客"></a>欢迎来到我的博客</h1><p>这是我的第一篇 Hexo 博客文章！</p><h2 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h2><ul><li>Hexo 是什么？</li><li>如何使用 Hexo？</li></ul><h3 id="Hexo-是什么？"><a href="#Hexo-是什么？" class="headerlink" title="Hexo 是什么？"></a>Hexo 是什么？</h3><p>Hexo 是一个基于 Node.js 的静态博客框架，支持 Markdown 书写文章。</p><h3 id="如何使用-Hexo？"><a href="#如何使用-Hexo？" class="headerlink" title="如何使用 Hexo？"></a>如何使用 Hexo？</h3><p>可以使用 <code>hexo new</code> 创建新文章，使用 <code>hexo generate</code> 生成静态文件，使用 <code>hexo deploy</code> 部署到 GitHub Pages。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Hexo</tag>
+      
+      <tag>博客</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2025/03/19/hello-world/"/>
     <url>/2025/03/19/hello-world/</url>

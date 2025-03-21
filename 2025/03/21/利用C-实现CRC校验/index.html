@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://example.com/img/CRC2.png">
 <meta property="og:image" content="http://example.com/img/CRC3.png">
 <meta property="article:published_time" content="2025-03-21T07:52:49.000Z">
-<meta property="article:modified_time" content="2025-03-21T08:01:24.781Z">
+<meta property="article:modified_time" content="2025-03-21T08:12:28.945Z">
 <meta property="article:author" content="Yunqiu Zhou">
 <meta property="article:tag" content="C++项目">
 <meta property="article:tag" content="编程">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          2.5k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          22 分钟
+          21 分钟
         
       </span>
     
@@ -299,7 +299,7 @@
 <p> 1.3 工业控制与嵌入式系统</p>
 <p> 1.4 软件与文件完整性</p>
 <p> 1.5 科学计算 &amp; 深空探测</p>
-<p>小结</p>
+<p> 小结</p>
 <p>二、CRC校验原理</p>
 <p> 2.1 CRC 的校验本质</p>
 <p> 2.2 CRC 校验的核心步骤</p>
@@ -315,55 +315,31 @@
 <p>5. 后处理 CRC</p>
 <p>6. 输出 CRC 校验码</p>
 <p>四、CRC校验代码（以CRC-4为例）</p>
-<p>总结</p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>CRC校验可以作为c++学习过程中的小项目，帮助我们更好的将c++学习中的理论知识和实践相结合，本项目中的CRC校验代码，涉及__基础语法、位运算、条件判断、循环控制、函数、类型转换__等。本篇文章从__CRC校验的用途、CRC校验代码实现原理、CRC校验代码__三方面展开。</p>
-<h1 id="一、CRC校验用途"><a href="#一、CRC校验用途" class="headerlink" title="一、CRC校验用途"></a>一、CRC校验用途</h1><p>CRC（循环冗余校验，Cyclic Redundancy Check）是一种__高效的错误检测技术__，它的主要作用是__检测数据传输或存储过程中可能发生的错误__，确保数据的完整性。下面介绍 CRC 在各个领域的__实际用途__。</p>
+<p>五、总结</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>CRC校验可以作为c++学习过程中的小项目，帮助我们更好的将c++学习中的理论知识和实践相结合，本项目中的CRC校验代码，涉及<strong>基础语法、位运算、条件判断、循环控制、函数、类型转换</strong>等。本篇文章从<strong>CRC校验的用途、CRC校验代码实现原理、CRC校验代码</strong>三方面展开。</p>
+<h1 id="一、CRC校验用途"><a href="#一、CRC校验用途" class="headerlink" title="一、CRC校验用途"></a>一、CRC校验用途</h1><p>CRC（循环冗余校验，Cyclic Redundancy Check）是一种<strong>高效的错误检测技术</strong>，它的主要作用是<strong>检测数据传输或存储过程中可能发生的错误</strong>，确保数据的完整性。下面介绍 CRC 在各个领域的<strong>实际用途</strong>。</p>
 <h3 id="1-1-通信协议与数据传输"><a href="#1-1-通信协议与数据传输" class="headerlink" title="1.1 通信协议与数据传输"></a>1.1 <strong><strong>通信协议与数据传输</strong></strong></h3><ul>
-<li>__网络通信：__在 <strong>以太网 (Ethernet)</strong>、<strong>Wi-Fi</strong> 等协议中，数据包都会附带 CRC 校验码，接收端对其进行计算并校验数据是否完整。如果 CRC 校验失败，则表示数据包在传输过程中出现错误，需要 <strong>请求重传 (ARQ)</strong> 或 <strong>丢弃错误数据</strong>。以太网 (Ethernet)主要使用CRC-32检测数据帧中的错误。</li>
-<li>__无线通信：__在无线环境下，数据容易受 <strong>信号干扰、噪声、抖动</strong> 等影响，因此 CRC 被用于数据包的错误检测。<strong>5G NR（New Radio）</strong> 使用 <strong>CRC-24</strong> 进行数据完整性校验，以减少误码率。蓝牙 (Bluetooth)、ZigBee、LoRa 等无线通信协议中，通常使用 CRC-8 或 CRC-16进行校验。</li>
-<li>__数据链路层协议：__在 <strong>HDLC、PPP（点对点协议）、CAN 总线</strong> 等数据链路层协议中，使用 <strong>CRC-16 或 CRC-32</strong> 进行数据帧的完整性校验。CAN 总线（用于汽车、工业自动化）使用 CRC-15开展校验，USB 协议 采用 CRC-5 和 CRC-16进行数据包的错误检测。1.2</li>
+<li>**网络通信：**在 <strong>以太网 (Ethernet)</strong>、<strong>Wi-Fi</strong> 等协议中，数据包都会附带 CRC 校验码，接收端对其进行计算并校验数据是否完整。如果 CRC 校验失败，则表示数据包在传输过程中出现错误，需要 <strong>请求重传 (ARQ)</strong> 或 <strong>丢弃错误数据</strong>。以太网 (Ethernet)主要使用CRC-32检测数据帧中的错误。</li>
+<li>**无线通信：**在无线环境下，数据容易受 <strong>信号干扰、噪声、抖动</strong> 等影响，因此 CRC 被用于数据包的错误检测。<strong>5G NR（New Radio）</strong> 使用 <strong>CRC-24</strong> 进行数据完整性校验，以减少误码率。蓝牙 (Bluetooth)、ZigBee、LoRa 等无线通信协议中，通常使用 CRC-8 或 CRC-16进行校验。</li>
+<li>**数据链路层协议：**在 <strong>HDLC、PPP（点对点协议）、CAN 总线</strong> 等数据链路层协议中，使用 <strong>CRC-16 或 CRC-32</strong> 进行数据帧的完整性校验。CAN 总线（用于汽车、工业自动化）使用 CRC-15开展校验，USB 协议 采用 CRC-5 和 CRC-16进行数据包的错误检测。</li>
 </ul>
 <h3 id="1-2-存储设备"><a href="#1-2-存储设备" class="headerlink" title="1.2 存储设备"></a>1.2 存储设备</h3><ul>
-<li>__硬盘、SSD、RAID 纠错：__在 <strong>机械硬盘 (HDD)</strong> 和 <strong>固态硬盘 (SSD)</strong> 读取数据时，数据可能因 <strong>磁场干扰、坏扇区</strong> 等原因而发生错误，因此使用 <strong>CRC 校验</strong> 来检测数据损坏。<strong>RAID（冗余阵列磁盘）</strong> 采用 CRC 结合 <strong>ECC（纠错码）</strong> 确保数据存储的可靠性。</li>
+<li>**硬盘、SSD、RAID 纠错：**在 <strong>机械硬盘 (HDD)</strong> 和 <strong>固态硬盘 (SSD)</strong> 读取数据时，数据可能因 <strong>磁场干扰、坏扇区</strong> 等原因而发生错误，因此使用 <strong>CRC 校验</strong> 来检测数据损坏。<strong>RAID（冗余阵列磁盘）</strong> 采用 CRC 结合 <strong>ECC（纠错码）</strong> 确保数据存储的可靠性。</li>
 <li><strong>光盘 (CD&#x2F;DVD) 读取：CD、DVD、Blu-ray</strong> 盘片存储的数据容易受 <strong>划痕、老化、光学误差</strong> 影响，因此采用 CRC 进行错误检测，并结合 <strong>Reed-Solomon 纠错码</strong> 修复错误。</li>
 </ul>
 <h3 id="1-3-工业控制与嵌入式系统"><a href="#1-3-工业控制与嵌入式系统" class="headerlink" title="1.3 工业控制与嵌入式系统"></a>1.3 工业控制与嵌入式系统</h3><ul>
-<li>__物联网（IoT）、嵌入式设备：__物联网 (IoT) 设备，如 <strong>智能传感器、无线模块、智能家居设备</strong>，使用 CRC 校验数据完整性，避免错误数据导致系统失效。</li>
-<li>__汽车电子（车载网络 CAN 总线）：__现代汽车的 ECU（电子控制单元）、传感器、自动驾驶系统 都依赖 <strong>CAN 总线</strong> 进行通信。<strong>CAN 总线使用 CRC-15</strong> 进行数据帧校验，防止错误命令导致汽车故障。</li>
+<li>**物联网（IoT）、嵌入式设备：**物联网 (IoT) 设备，如 <strong>智能传感器、无线模块、智能家居设备</strong>，使用 CRC 校验数据完整性，避免错误数据导致系统失效。</li>
+<li>**汽车电子（车载网络 CAN 总线）：**现代汽车的 ECU（电子控制单元）、传感器、自动驾驶系统 都依赖 <strong>CAN 总线</strong> 进行通信。<strong>CAN 总线使用 CRC-15</strong> 进行数据帧校验，防止错误命令导致汽车故障。</li>
 </ul>
 <h3 id="1-4-软件与文件完整性"><a href="#1-4-软件与文件完整性" class="headerlink" title="1.4 软件与文件完整性"></a>1.4 软件与文件完整性</h3><ul>
-<li>__数据文件传输校验：__在文件下载或传输过程中，使用 CRC 校验文件的完整性，防止文件损坏或篡改。</li>
-<li>__数字签名 &amp; 数据防篡改：__CRC 可用于检测数据篡改，确保文件或数据包在存储或传输过程中未被恶意修改。<strong>区块链技术</strong>（Bitcoin、Ethereum）在交易数据中使用 <strong>哈希 + CRC 机制</strong> 检查数据完整性。<strong>银行 ATM 交易</strong> 采用 <strong>CRC-16 或 CRC-32</strong> 进行 PIN 码数据完整性校验。</li>
-<li>__软件校验：__某些软件使用 CRC 校验自身代码是否被恶意修改。<strong>游戏反作弊系统</strong> 通过 CRC 检测游戏文件是否被修改，如 <strong>VAC（Valve 反作弊系统）</strong>。<strong>Windows PE 文件校验</strong> 通过 CRC-32 计算 PE 头部，防止病毒篡改系统文件。</li>
+<li>**数据文件传输校验：**在文件下载或传输过程中，使用 CRC 校验文件的完整性，防止文件损坏或篡改。</li>
+<li>**数字签名 &amp; 数据防篡改：**CRC 可用于检测数据篡改，确保文件或数据包在存储或传输过程中未被恶意修改。<strong>区块链技术</strong>（Bitcoin、Ethereum）在交易数据中使用 <strong>哈希 + CRC 机制</strong> 检查数据完整性。<strong>银行 ATM 交易</strong> 采用 <strong>CRC-16 或 CRC-32</strong> 进行 PIN 码数据完整性校验。</li>
+<li>**软件校验：**某些软件使用 CRC 校验自身代码是否被恶意修改。<strong>游戏反作弊系统</strong> 通过 CRC 检测游戏文件是否被修改，如 <strong>VAC（Valve 反作弊系统）</strong>。<strong>Windows PE 文件校验</strong> 通过 CRC-32 计算 PE 头部，防止病毒篡改系统文件。</li>
 </ul>
 <h3 id="1-5-科学计算-深空探测"><a href="#1-5-科学计算-深空探测" class="headerlink" title="1.5 科学计算 &amp; 深空探测"></a>1.5 科学计算 &amp; 深空探测</h3><ul>
-<li>__NASA 深空探测：__在深空探测任务（如 <strong>火星探测器、哈勃望远镜</strong>）中，由于数据传输距离极远，CRC 与 <strong>Forward Error Correction (FEC)</strong> 结合，确保数据可靠传输。</li>
+<li>**NASA 深空探测：**在深空探测任务（如 <strong>火星探测器、哈勃望远镜</strong>）中，由于数据传输距离极远，CRC 与 <strong>Forward Error Correction (FEC)</strong> 结合，确保数据可靠传输。</li>
 </ul>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><strong>应用场景</strong></p>
-<p><strong>CRC 作用</strong></p>
-<p><strong>常见CRC类型</strong></p>
-<p>网络通信</p>
-<p>数据包完整性检测</p>
-<p>CRC-16、CRC-32</p>
-<p>无线通信</p>
-<p>低信号环境错误检测</p>
-<p>CRC-8、CRC-16</p>
-<p>硬盘&#x2F;SSD</p>
-<p>存储数据完整性</p>
-<p>CRC-32</p>
-<p>汽车 CAN 总线</p>
-<p>ECU 数据校验</p>
-<p>CRC-15</p>
-<p>压缩文件</p>
-<p>ZIP、RAR 数据校验</p>
-<p>CRC-32</p>
-<p>软件防作弊</p>
-<p>防止代码修改</p>
-<p>CRC-32</p>
-<p>NASA 太空通信</p>
-<p>远距离数据完整性</p>
-<p>CRC-32</p>
-<h1 id="二、CRC校验原理"><a href="#二、CRC校验原理" class="headerlink" title="二、CRC校验原理"></a>二、CRC校验原理</h1><h2 id="2-1-CRC-的校验本质"><a href="#2-1-CRC-的校验本质" class="headerlink" title="2.1 CRC 的校验本质"></a>2.1 CRC 的校验本质</h2><p><strong>数据被视为一个二进制数，选择一个固定的 CRC 生成多项式（比如 <strong>x^4 + x + 1</strong>），然后使用二进制除法（不进位） 计算出余数（即 CRC 校验码）。将余数附加到数据后面，接收方可以通过相同的计算过程来检查数据是否正确。</strong></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><h1 id="二、CRC校验原理"><a href="#二、CRC校验原理" class="headerlink" title="二、CRC校验原理"></a>二、CRC校验原理</h1><h2 id="2-1-CRC-的校验本质"><a href="#2-1-CRC-的校验本质" class="headerlink" title="2.1 CRC 的校验本质"></a>2.1 CRC 的校验本质</h2><p><strong>数据被视为一个二进制数，选择一个固定的 CRC 生成多项式（比如 <strong>x^4 + x + 1</strong>），然后使用二进制除法（不进位） 计算出余数（即 CRC 校验码）。将余数附加到数据后面，接收方可以通过相同的计算过程来检查数据是否正确。</strong></p>
 <h2 id="2-2-CRC-校验的核心步骤"><a href="#2-2-CRC-校验的核心步骤" class="headerlink" title="2.2 CRC 校验的核心步骤"></a>2.2 CRC 校验的核心步骤</h2><h3 id="（1）选择-CRC-生成多项式"><a href="#（1）选择-CRC-生成多项式" class="headerlink" title="（1）选择 CRC 生成多项式"></a>（1）选择 CRC 生成多项式</h3><p>下图是常用的CRC模型，参照红框。通信双方可以约定一个相同的多项式。<br><img src="/img/CRC1.png" srcset="/img/loading.gif" lazyload alt="图片描述"></p>
 <p><strong>其中：</strong></p>
 <ul>
@@ -383,7 +359,7 @@
 <h3 id="（3）接收端校验"><a href="#（3）接收端校验" class="headerlink" title="（3）接收端校验"></a>（3）接收端校验</h3><p> 接收端收到 10110010110，用相同的 二进制除法 计算 CRC 余数：</p>
 <ul>
 <li>如果余数为 0000，表示数据未出错 。</li>
-<li>如果余__数 不为 __0000，表示数据出错 。</li>
+<li>如果余**数 不为 **0000，表示数据出错 。</li>
 </ul>
 <h2 id="2-3-CRC-二进制除法示例"><a href="#2-3-CRC-二进制除法示例" class="headerlink" title="2.3 CRC 二进制除法示例"></a>2.3 CRC 二进制除法示例</h2><p><img src="/img/CRC2.png" srcset="/img/loading.gif" lazyload alt="图片描述"><br>​</p>
 <h1 id="三、CRC校验代码实现步骤"><a href="#三、CRC校验代码实现步骤" class="headerlink" title="三、CRC校验代码实现步骤"></a>三、CRC校验代码实现步骤</h1><p>注意实际编程时并不直接使用上述方法，以下是编程实现步骤：</p>
@@ -412,34 +388,32 @@
 <h1 id="四、CRC校验代码（以CRC-4为例）"><a href="#四、CRC校验代码（以CRC-4为例）" class="headerlink" title="四、CRC校验代码（以CRC-4为例）"></a><strong><strong>四、CRC校验代码（以CRC-4为例）</strong></strong></h1><p>以下是运行结果示例：<br><img src="/img/CRC3.png" srcset="/img/loading.gif" lazyload alt="图片描述"></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>1.系统性的了解了CRC校验的用途、原理、编程实现，深刻理解了CRC校验的本质。</p>
 <p>2.对于c++学习：</p>
-<p>__（1）学习了两个头文件 #include <iomanip>、#include <stdexcept> __ 。其中：</p>
-<p><iomanip>（I&#x2F;O 操作库）主要用于 <strong>控制输出格式：</strong></p>
+<p><strong>（1）学习了两个头文件iomanip 、stdexcept</strong> 。其中：</p>
+<p> iomanip（I&#x2F;O 操作库）主要用于 <strong>控制输出格式：</strong></p>
 <ul>
 <li>设置十六进制输出格式（hex）</li>
 <li>大写字母格式（uppercase）</li>
 <li>设置输出宽度和填充字符（setw()、setfill()）</li>
 </ul>
-<p> <stdexcept>是 C++ 标准库中的 <strong>异常处理头文件：</strong></p>
+<p>  stdexcept是 C++ 标准库中的 <strong>异常处理头文件：</strong></p>
 <ul>
 <li>std::invalid_argument <strong>（无效参数异常）</strong></li>
 <li>std::out_of_range <strong>（超出范围异常）</strong></li>
 <li>std::runtime_error <strong>（运行时错误异常）</strong></li>
 </ul>
-<p>这些异常可以用 throw 抛出，也可以用__ __try-catch 语句捕获，防止程序崩溃。</p>
+<p>这些异常可以用 throw 抛出，也可以用** **try-catch 语句捕获，防止程序崩溃。</p>
 <p>（2）<strong>数据类型:uint8_t</strong></p>
 <p>使用 uint8_t（无符号 8 位整数）来定义 CRC_POLYNOMIAL（CRC 多项式）的原因是为了确保在内存中占用最小的空间，并且它的范围适合存储 CRC 多项式值。</p>
 <p>（3）<strong>反转函数中的位运算符</strong></p>
-<p>reflected：作为存储反转后的数据&#x2F;&#x2F;data &amp; (1 &lt;&lt; i)： 用于检查 data 的第i位是否为1 这里”1”二进制数为0000 0001&#x2F;*reflected |&#x3D; (1 &lt;&lt; (7 - i))：这里一定要用 “|&#x3D;” (按位或赋值运算符)，若使用”&#x3D;”,下次循环新的 </p>
-<p>  reflected会覆盖上一轮的结果。*&#x2F;</p>
+<p>reflected：作为存储反转后的数据&#x2F;&#x2F;data &amp; (1 &lt;&lt; i)： 用于检查 data 的第i位是否为1 这里”1”二进制数为0000 0001&#x2F;reflected |&#x3D; (1 &lt;&lt; (7 - i))：这里一定要用 “|&#x3D;” (按位或赋值运算符)，若使用”&#x3D;”,下次循环新的reflected会覆盖上一轮的结果。</p>
 <p>（4）<strong>^&#x3D; 表示异或运算</strong></p>
-<p>（5）__static_cast<T>(): __static_cast<T>(value) 是 C++ <strong>最常用的类型转换操作</strong></p>
+<p>（5）**static_cast<T>(): **static_cast<T>(value) 是 C++ <strong>最常用的类型转换操作</strong></p>
 <ul>
 <li>显式转换不同类型的数据（如 int → uint8_t）。</li>
 <li>确保转换是安全的（编译时进行检查）。</li>
 <li>不会影响底层数据的存储方式。</li>
 </ul>
-<p>安全转换为 `uint8_t`uint8_t data &#x3D; static_cast&lt;uint8_t&gt;(tempData);</p>
-<p>为什么不直接使用 uint8_t data &#x3D; tempData;？&#x2F;&#x2F;tempData 是 int 类型（32 位），直接赋值给 uint8_t（8 位）时，可能产生溢出。</p>
+<p>安全转换为 `uint8_t`uint8_t data &#x3D; static_cast&lt;uint8_t&gt;(tempData);<br>为什么不直接使用 uint8_t data &#x3D; tempData;?<br>tempData 是 int 类型（32 位），直接赋值给 uint8_t（8 位）时，可能产生溢出。</p>
 <p>​</p>
 
                 
